@@ -1,0 +1,9 @@
+version: '3'
+services:
+  appsvr:
+    image: payara/server-full
+    ports:
+     - "8080:8080"
+     - "4848:4848"
+    volumes:
+     - "./BornesEar/build/libs/BornesEar.ear:/opt/payara5/glassfish/domains/domain1/autodeploy/BornesEar.ear"
