@@ -1,4 +1,4 @@
-package fr.usmb.m2isc.javaee.comptes.jpa;
+package fr.usmb.m2isc.javaee.bornes.jpa;
 
 import java.io.Serializable;
 

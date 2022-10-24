@@ -1,4 +1,4 @@
-package
+package fr.usmb.m2isc.javaee.bornes.jpa;
 
 import java.util.Date;
 import java.util.UUID;
