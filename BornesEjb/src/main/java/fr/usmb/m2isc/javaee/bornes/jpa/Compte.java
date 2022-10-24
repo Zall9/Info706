@@ -8,22 +8,22 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Version;
 
-@NamedQueries ({
-	@NamedQuery(name="all", query="SELECT c FROM Compte c"),
-	@NamedQuery(name="findWithNum", query="SELECT c FROM Compte c WHERE c.numero LIKE :partialNum ORDER BY c.numero ASC")
+@NamedQueries({
+		@NamedQuery(name = "all", query = "SELECT c FROM Compte c"),
+		@NamedQuery(name = "findWithNum", query = "SELECT c FROM Compte c WHERE c.numero LIKE :partialNum ORDER BY c.numero ASC")
 })
 @Entity
 public class Compte implements Serializable {
-	
+
 	@Id
 	private String numero;
 	private double solde;
 	@Version
 	private long version;
-	
+
 	public Compte() {
 	}
-	
+
 	public Compte(String numero, double solde) {
 		super();
 		this.numero = numero;
@@ -33,13 +33,16 @@ public class Compte implements Serializable {
 	public String getNumero() {
 		return numero;
 	}
+
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
+
 	public double getSolde() {
 		return solde;
 	}
+
 	public void setSolde(double solde) {
 		this.solde = solde;
-	}	
+	}
 }

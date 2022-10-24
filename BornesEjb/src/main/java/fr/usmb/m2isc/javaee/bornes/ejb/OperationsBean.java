@@ -3,13 +3,19 @@ package fr.usmb.m2isc.javaee.bornes.ejb;
 import java.util.Date;
 import java.util.UUID;
 
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import fr.usmb.m2isc.javaee.bornes.jpa.Paiement;
 import fr.usmb.m2isc.javaee.bornes.jpa.Ticket;
 
+@Stateless
+@Remote
 public class OperationsBean implements Operations {
 
+    @PersistenceContext
     private EntityManager em;
 
     @Override
