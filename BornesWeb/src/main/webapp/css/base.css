@@ -4,5 +4,7 @@ h1 { text-align: center}
 table { border-collapse: collapse; witdh: 25em;}
 th, td, tr {border: thin solid black; padding: 0.5em; }
 tr:nth-child(even) {background-color: #f2f2f2;}
-td:nth-child(2){text-align: right; width: 10em }
-//thead th, thead tr { border: medium solid black; font-weight: bold;}
+tr:nth-child(odd) {background-color: rgb(150, 45, 45);}
+thead th, thead tr { border: medium solid black; font-weight: bold;}
+tfoot th, tfoot tr { border: medium solid black; font-weight: bold;}
+tfoot td { text-align: right; }

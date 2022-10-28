@@ -6,22 +6,24 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Info comptes</title>
+	<title>Info tickets</title>
 	<link rel="stylesheet" type="text/css" href="css/base.css" >
 </head>
 <body>
-	<h1>Affichage comptes</h1>
-	<h2>Informations comptes :</h2>
+	<h1>Affichage tickets</h1>
+	<h2>Informations tickets :</h2>
 	<table>
-		<thead><tr><th>Numero</th><th>Solde</th></tr></thead>
+		<thead><tr><th>Date entree</th></tr></thead>
 		<tbody>
-			<c:forEach items="${comptes}"  var="compte">
-				<tr><td>${compte.numero }</td>
-				<td><fmt:formatNumber type="currency" currencySymbol="&euro;"
-				   		value="${compte.solde }"></fmt:formatNumber></td></tr>
+			<c:forEach items="${tickets}"  var="ticket">
+				<tr>
+					<td>
+						<p>Date entree : <fmt:formatDate value="${ticket.entryDate}" pattern="dd/MM/yyyy" /></p>
+					</td>
+				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-	<p><a href="index.html">Revenir � la page principale</a></p>
+	<p><a href="index.html">Revenir a la page principale</a></p>
 </body>
 </html>

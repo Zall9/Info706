@@ -1,16 +1,23 @@
 package fr.usmb.m2isc.javaee.bornes.ejb;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
+import javax.persistence.Query;
+import javax.ejb.EJBException;
 //import javax.jws.WebMethod;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
 
 import fr.usmb.m2isc.javaee.bornes.jpa.Paiement;
 import fr.usmb.m2isc.javaee.bornes.jpa.Ticket;
+
+
 
 @Stateless
 @Remote
@@ -86,5 +93,16 @@ public class OperationsBean implements Operations {
     public Ticket getTicket(String id) {
         return getTicket(UUID.fromString(id));
     }
+
+
+    @Override
+	public List<Ticket> findAllTickets() {
+		//Query req = em.createNamedQuery("all");
+		//return req.getResultList();
+
+        //  return all ticket 
+        return em.createQuery("SELECT t FROM Ticket t", Ticket.class).getResultList();
+	}
+
 
 }
