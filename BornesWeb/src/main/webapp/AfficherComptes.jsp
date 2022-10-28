@@ -13,7 +13,7 @@
 	<h1>Affichage comptes</h1>
 	<h2>Informations comptes :</h2>
 	<table>
-		<thead><tr><th>Numéro</th><th>Solde</th></tr></thead>
+		<thead><tr><th>Numero</th><th>Solde</th></tr></thead>
 		<tbody>
 			<c:forEach items="${comptes}"  var="compte">
 				<tr><td>${compte.numero }</td>
@@ -22,6 +22,6 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<p><a href="index.html">Revenir à la page principale</a></p>
+	<p><a href="index.html">Revenir ï¿½ la page principale</a></p>
 </body>
 </html>

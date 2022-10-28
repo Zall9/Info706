@@ -8,12 +8,14 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServlet;
 
 import fr.usmb.m2isc.javaee.bornes.ejb.Operations;
+import fr.usmb.m2isc.javaee.bornes.jpa.Ticket;
 
-@WebServlet("/CreerTicket")
-public class CreerTicketServlet {
-    private static final long serialVersionUID = 1L;
+@WebServlet("/CreerTicketServlet")
+public class CreerTicketServlet extends HttpServlet {
+    //private static final long serialVersionUID = 1L;
     @EJB
     private Operations ejb;
 
@@ -22,24 +24,15 @@ public class CreerTicketServlet {
      */
     public CreerTicketServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-     *      response)
-     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        UUID id = UUID.fromString(request.getParameter("ticketId"));
-        request.setAttribute("ticket", ejb.getTicket(id));
-        request.getRequestDispatcher("/WEB-INF/creerTicket.jsp").forward(request, response);
+        Ticket tck = ejb.b1CreerTicket();
+        request.setAttribute("ticket", tck);
+        request.getRequestDispatcher("/AfficherTicket.jsp").forward(request, response);
     }
 
-    /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-     *      response)
-     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // TODO Auto-generated method stub

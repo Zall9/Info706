@@ -16,4 +16,6 @@ public interface Operations {
     public void sortir(Ticket ticket);
 
     public Ticket getTicket(UUID id);
+
+    public Ticket getTicket(String id);
 }

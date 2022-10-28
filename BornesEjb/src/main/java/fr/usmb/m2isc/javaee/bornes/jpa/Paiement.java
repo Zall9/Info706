@@ -3,6 +3,10 @@ package fr.usmb.m2isc.javaee.bornes.jpa;
 import java.util.Date;
 import java.util.UUID;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Paiement {
 
     /*
@@ -12,6 +16,7 @@ public class Paiement {
      * le montant payé (en euro),
      * le type de paiement utilisé (CB, espèces).
      */
+    @Id
     private UUID id;
     private Date datePaiement;
     private double montant;

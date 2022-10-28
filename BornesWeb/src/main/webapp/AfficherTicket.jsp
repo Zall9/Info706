@@ -5,16 +5,17 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Info compte</title>
+	<title>Info ticket</title>
 	<link rel="stylesheet" type="text/css" href="css/base.css" >
 </head>
 <body>
-	<h1>Affichage compte</h1>
-	<h2>Informations compte :</h2>
-	<p>numero : ${compte.numero }</p>
-	<p>solde : <fmt:formatNumber type="currency" currencySymbol="&euro;"
-	   value="${compte.solde }"></fmt:formatNumber>
-	</p>
-	<a href="index.html">Revenir à la page principale</a>
+	<h1>Affichage Ticket</h1>
+	<h2>Informations ticket :</h2>
+
+	<!--  print date -->
+	<p>Date entree : <fmt:formatDate value="${ticket.entryDate}" pattern="dd/MM/yyyy" /></p>
+
+	
+	<a href="index.html">Revenir a la page principale</a>
 </body>
 </html>

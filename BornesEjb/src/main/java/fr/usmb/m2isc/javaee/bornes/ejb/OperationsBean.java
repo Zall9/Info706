@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
+//import javax.jws.WebMethod;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -44,10 +45,10 @@ public class OperationsBean implements Operations {
         Ticket ticket = em.find(Ticket.class, ticketID);
         Paiement paiement = em.find(Paiement.class, paiementID);
         Date now = new Date();
-        ticket.setDateSortie(now);
+        ticket.setExitDate(now);
         paiement.setDatePaiement(now);
         // I need the difference between dateEntree and dateSortie in minutes
-        double difference = (ticket.getDateSortie().getTime() - ticket.getDateEntree().getTime()) / 60000;
+        double difference = (ticket.getExitDate().getTime() - ticket.getEntryDate().getTime()) / 60000;
         paiement.setMontant(difference);
 
     }
@@ -56,7 +57,7 @@ public class OperationsBean implements Operations {
     public boolean estSortiAvant15mins(Ticket ticket) {
         // return true if the attribute dateSortie from ticket is less than 15 minutes
 
-        return (ticket.getDateSortie().getTime() - ticket.getDateEntree().getTime()) < 900000;
+        return (ticket.getExitDate().getTime() - ticket.getEntryDate().getTime()) < 900000;
 
     }
 
@@ -74,8 +75,16 @@ public class OperationsBean implements Operations {
      * @param id The id of the ticket to retrieve
      * @return A ticket object
      */
+    @Override
     public Ticket getTicket(UUID id) {
         em.find(Ticket.class, id);
         return null;
     }
+
+    // getTicket with String id argument
+    @Override
+    public Ticket getTicket(String id) {
+        return getTicket(UUID.fromString(id));
+    }
+
 }
