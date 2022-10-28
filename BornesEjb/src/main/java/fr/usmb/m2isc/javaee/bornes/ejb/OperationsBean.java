@@ -97,10 +97,6 @@ public class OperationsBean implements Operations {
 
     @Override
 	public List<Ticket> findAllTickets() {
-		//Query req = em.createNamedQuery("all");
-		//return req.getResultList();
-
-        //  return all ticket 
         return em.createQuery("SELECT t FROM Ticket t", Ticket.class).getResultList();
 	}
 
