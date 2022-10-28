@@ -18,7 +18,7 @@ public interface Operations {
 
     public Ticket getTicket(UUID id);
 
-    public Ticket getTicket(String id);
+    public Ticket getTicketStr(String id);
 
 
     List<Ticket> findAllTickets();

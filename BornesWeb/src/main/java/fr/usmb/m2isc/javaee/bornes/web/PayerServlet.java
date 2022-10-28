@@ -1,6 +1,7 @@
 package fr.usmb.m2isc.javaee.bornes.web;
 
 import java.io.IOException;
+import java.util.UUID;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -15,8 +16,8 @@ import fr.usmb.m2isc.javaee.bornes.jpa.Ticket;
 /**
  * Servlet utilisee pour afficher un compte.
  */
-@WebServlet("/AfficherTicketServlet")
-public class AfficherTicketServlet extends HttpServlet {
+@WebServlet("/PayerServlet")
+public class PayerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@EJB
@@ -25,7 +26,7 @@ public class AfficherTicketServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AfficherTicketServlet() {
+    public PayerServlet() {
         super();
     }
 
@@ -34,10 +35,10 @@ public class AfficherTicketServlet extends HttpServlet {
 	 */
     @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String num = request.getParameter("id");
+		String num = request.getParameter("ticketNum");
 		Ticket ticket = ejb.getTicketStr(num);
 		request.setAttribute("ticket", ticket);
-		request.getRequestDispatcher("/AfficherTicket.jsp").forward(request, response);		
+		request.getRequestDispatcher("/PayerTicket.jsp").forward(request, response);		
 	}
 
 	/**

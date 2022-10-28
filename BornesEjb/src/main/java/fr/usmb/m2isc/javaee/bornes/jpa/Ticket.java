@@ -34,22 +34,63 @@ public class Ticket implements Serializable {
     @JoinColumn
     private List<Paiement> payments = new ArrayList<Paiement>();
     
+    //add image name variable string
     
+    private String imagePath;
+
+    private ArrayList<String> imageList = new ArrayList<String>();
+    
+    private boolean estSorti;
+
+    private boolean aPayer;
     public Ticket() {
+        imageList.add("./assets/cars/bugatti.png");
+        imageList.add("./assets/cars/Renault-Eleve.png");
+        imageList.add("./assets/cars/twingo.png");
+        this.ticketNum = UUID.randomUUID().toString();
         this.entryDate = new Date();
+        //random number between 0 and imageList size
+        int randomNum = (int)(Math.random() * imageList.size());
+        // setTicketImage(imageList.get(randomNum));
+        this.imagePath = imageList.get(randomNum);
+        this.estSorti = false;
+        this.aPayer = false;
     }
     
     
     public Ticket(UUID randomUUID, Date date) {
+        imageList.add("./assets/cars/bugatti.png");
+        imageList.add("./assets/cars/Renault-Eleve.png");
+        imageList.add("./assets/cars/twingo.png");
         this.ticketNum = randomUUID.toString();
         this.entryDate = date;
+        //random number between 0 and imageList size
+        int randomNum = (int)(Math.random() * imageList.size());
+        // setTicketImage(imageList.get(randomNum));
+        this.imagePath = imageList.get(randomNum);
+        this.estSorti = false;
+        this.aPayer = false;
     }
 
+    public boolean setEstSorti() {
+        return !estSorti;
+    }
+
+    public boolean getEstSorti() {
+        return estSorti;
+    }
 
     public Date getEntryDate() {
         return entryDate;
     }
 
+    public boolean setAPayer() {
+        return !aPayer;
+    }
+
+    public boolean getAPayer() {
+        return aPayer;
+    }
 
     public void setEntryDate(Date entryDate) {
         this.entryDate = entryDate;
@@ -72,5 +113,13 @@ public class Ticket implements Serializable {
 
     public void setTicketNum(String ticketNum) {
         this.ticketNum = ticketNum;
+    }
+    public String getImagePath() {
+        return this.imagePath;
+    }
+
+    //set imagePath
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }

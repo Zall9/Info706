@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="ISO-8859-1">
-	<title>Sujet TP Info706</title>
-	<link rel="stylesheet" type="text/css" href="css/base.css" >
-</head>
-<body>
-<h1>Bonjour bienvenu sur le TP INFO706 sujet : Bornes de parking</h1>
-<h2>Crer un ticket :</h2>
-	<form action="CreerTicketServlet" method="post">
-		<input type="submit" value="valider">
-	</form>
+  <head>
+    <meta charset="ISO-8859-1" />
+    <title>Sujet TP Info706</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="css/base.css" />
+  </head>
+  <body>
+    <h1>Bienvenu au parking de Monaco</h1>
+    <h2>Recuperer votre Ticket</h2>
+    <form action="CreerTicketServlet" method="post">
+      <button class="button is-warning" type="submit" value="valider" >Retirez votre ticket de la borne</button>
+    </form>
 
-<h2>Crer un ticket :</h2>
-	<form action="AfficherTicketsServlet" method="post">
-		<input type="submit" value="Afficher tous les tickets">
-	</form>
-</body>
+    <h2>Payer votre ticket en choisisant votre voiture :</h2>
+    <form action="AfficherTicketsServlet" method="get">
+      <button class="button is-warning" type="submit">Payez votre ticket !</button>
+    </form>
+  </body>
 </html>
+  

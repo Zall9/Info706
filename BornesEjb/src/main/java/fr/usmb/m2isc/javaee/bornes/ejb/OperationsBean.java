@@ -84,13 +84,12 @@ public class OperationsBean implements Operations {
      */
     @Override
     public Ticket getTicket(UUID id) {
-        em.find(Ticket.class, id);
-        return null;
+        return em.find(Ticket.class, id.toString());
     }
 
     // getTicket with String id argument
     @Override
-    public Ticket getTicket(String id) {
+    public Ticket getTicketStr(String id) {
         return getTicket(UUID.fromString(id));
     }
 
