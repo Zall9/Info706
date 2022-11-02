@@ -14,21 +14,7 @@
        <h1 class="title">Paiement reussi</h1>
     </div>
 
-    <div class="has-text-centered mt-6">
-      <h4>to do list for this page</h4>
-      <ul>
-        <li>Mettre en place la verification pour que le user ne peut pas re payer avant les 15 minutes</li>
-        <li>refactor le code clean</li>
-        <li>Creer le README du github</li>
-        <li>Add le prof dans le read me</li>
-        <li>Faire une page error.jsp</li>
-      </ul>
-    </div>
-
-    <p>taille du tableau apres ajout :  ${taille} </p>
-    <p>La derniere date :  ${lastPaiement} </p>
-    <p>La difference :  ${minute} </p>
-
+   
 
     <div
     style="

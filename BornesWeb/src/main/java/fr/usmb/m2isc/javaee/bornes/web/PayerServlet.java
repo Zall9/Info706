@@ -36,8 +36,16 @@ public class PayerServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String num = request.getParameter("ticketNum");
 		Ticket ticket = ejb.getTicketStr(num);
-		request.setAttribute("ticket", ticket);
-		request.getRequestDispatcher("/PayerTicket.jsp").forward(request, response);		
+
+		if(ticket.canMakePaiement())
+		{
+			request.setAttribute("ticket", ticket);
+			request.getRequestDispatcher("/PayerTicket.jsp").forward(request, response);	
+		}else{
+			request.setAttribute("ticket", ticket);
+			request.getRequestDispatcher("/ExitParking.jsp").forward(request, response);	
+		}
+			
 	}
 
 	/**

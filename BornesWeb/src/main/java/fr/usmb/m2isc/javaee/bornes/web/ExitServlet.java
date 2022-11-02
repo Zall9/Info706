@@ -54,7 +54,7 @@ public class ExitServlet extends HttpServlet {
 		long diff = (now.getTime() - lastDatePaiement.getTime()) / (60 * 1000);
 
 		//check 15 minutes
-		if (diff < 1) {
+		if (diff < 3) {
 			// il peut sortir
 			// envoyer avec un message de vous etes bien sorti
 

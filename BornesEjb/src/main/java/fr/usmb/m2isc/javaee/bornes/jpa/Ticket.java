@@ -161,4 +161,25 @@ public class Ticket implements Serializable {
     public String getPaiementAt(int i){
         return this.payments.get(i).toString();
     }
+
+
+    //fontion permettant d'accepter la possibilite d'effectuer des paiements seulement si aucun paiement existe ou si le dernier depasse de plus de 15 minutes
+    //can make Payement
+    public boolean canMakePaiement(){
+        if(this.payments.size() == 0){
+            return true;
+        }else{
+            Date now = new Date();
+            Date lastPaiement = this.getLastPaiement().getDatePaiement();
+
+            //diff in minute
+            long diff = (now.getTime() - lastPaiement.getTime()) / 60000;
+            if(diff >= 3){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    }
+
 }
