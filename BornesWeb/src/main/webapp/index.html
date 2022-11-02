@@ -10,16 +10,30 @@
     <link rel="stylesheet" type="text/css" href="css/base.css" />
   </head>
   <body>
-    <h1>Bienvenu au parking de Monaco</h1>
-    <h2>Recuperer votre Ticket</h2>
-    <form action="CreerTicketServlet" method="post">
-      <button class="button is-warning" type="submit" value="valider" >Retirez votre ticket de la borne</button>
-    </form>
 
-    <h2>Payer votre ticket en choisisant votre voiture :</h2>
-    <form action="AfficherTicketsServlet" method="get">
-      <button class="button is-warning" type="submit">Payez votre ticket !</button>
-    </form>
+    <div class="has-text-centered mb-6 mt-6">
+      <h1 class="title">Bienvenu au parking de Monaco</h1>
+    </div>
+
+
+    <div class="columns  is-vcentered m-auto">
+        <div class="column ml-6">
+          <h2 class="subtitle">Recuperer votre Ticket</h2>
+          <form action="CreerTicketServlet" method="post">
+            <button class="button is-warning" type="submit" value="valider">
+              Retirez votre ticket de la borne
+            </button>
+          </form>
+        </div>
+
+        <div class="column">
+          <h2 class="subtitle">Payer votre ticket en choisisant votre voiture :</h2>
+          <form action="AfficherTicketsServlet" method="get">
+            <button class="button is-warning" type="submit">
+              Payez votre ticket !
+            </button>
+          </form>
+        </div>
+    </div>
   </body>
 </html>
-  

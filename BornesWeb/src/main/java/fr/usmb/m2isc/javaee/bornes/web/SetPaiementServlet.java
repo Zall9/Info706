@@ -39,14 +39,13 @@ public class SetPaiementServlet extends HttpServlet {
 		String num = request.getParameter("ticketNum");
 		Ticket ticket = ejb.getTicketStr(num);
         ticket.setaPayer();
+		ejb.updateTicket(ticket);
         //create new date now
         Date n = new Date();
 
         long duration  = ticket.getEntryDate().getTime() - n.getTime();
         long diffInMinutes = TimeUnit.MILLISECONDS.toMinutes(duration);
-        double montant = 10000;
-
-        // ticket.setcurrentMontant(montant);
+        double montant = 1000;
 
 		request.setAttribute("ticket", ticket);
         request.setAttribute("montant", montant);

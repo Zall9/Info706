@@ -11,21 +11,24 @@
       </head>
 <body>
     <div class="has-text-centered">
-       <h1>Paiement reussi</h1>
+       <h1 class="title">Paiement reussi</h1>
     </div>
 
     <div class="has-text-centered mt-6">
       <h4>to do list for this page</h4>
       <ul>
-        <li>Creer la servlet de sortie</li>
-        <li>Rediriger le user vers la page d'accueil </li>
-        <li>Verifier la date dans la servlet avec l'ejb, si depasser repayer sinon page d'accueil</li>
-        <li>Mettre en place la verification pour que le user ne peut pas re payer avant les 15 minutes</li>]
+        <li>Mettre en place la verification pour que le user ne peut pas re payer avant les 15 minutes</li>
         <li>refactor le code clean</li>
         <li>Creer le README du github</li>
         <li>Add le prof dans le read me</li>
+        <li>Faire une page error.jsp</li>
       </ul>
     </div>
+
+    <p>taille du tableau apres ajout :  ${taille} </p>
+    <p>La derniere date :  ${lastPaiement} </p>
+    <p>La difference :  ${minute} </p>
+
 
     <div
     style="
@@ -45,7 +48,7 @@
       >
     </button>
 
-    <form action="..." method="get">
+    <form action="ExitServlet" method="get">
       <input type="hidden" name="ticketNum" value="${ticket.ticketNum}" />
       <button class="button is-warning" type="submit">Sortir du parking !</button>
     </form>

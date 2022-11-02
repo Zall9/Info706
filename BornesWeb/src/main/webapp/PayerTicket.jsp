@@ -15,11 +15,29 @@ pageEncoding="ISO-8859-1"%>
     <link rel="stylesheet" type="text/css" href="css/base.css" />
   </head>
   <body>
-    <h1>Facture Ticket</h1>
-    <h2>Informations ticket :</h2>
 
-    <!--  print date -->
-    <p>
+    <!-- add if -->
+    <c:if test="${messageInfo != null}">
+      <article class="message is-warning">
+        <div class="message-header">
+          <p>Warning</p>
+          <button class="delete" aria-label="delete"></button>
+        </div>
+        <div class="message-body">
+          ${messageInfo}
+        </div>
+      </article>
+    </c:if>
+
+   
+    
+
+    <h1 class="title mb-6">Facture Ticket</h1>
+    <h2 class="subtitle mb-4">Informations ticket :</h2>
+
+   <div class="ml-6">
+     <!--  print date -->
+     <p>
       Date entree :
       <fmt:formatDate value="${ticket.entryDate}" pattern="dd/MM/yyyy" />
     </p>
@@ -50,22 +68,7 @@ pageEncoding="ISO-8859-1"%>
       </form>
 
     </div>
-	<!-- 
-
-		on initisalise a false OK 
-		quand on clique sur le bouton on passe a true le a payer OK
-		la div s'afficher  OK 
-		et on affiche le prix OK 
-		et on affiche le bouton de paiement OK 
-		l'utilisateur rempli les infos OK 
-		lorsquil a cliquer le bouton OK 
-		on passe a false le a Payer OK 
-		creer un paiement OK 
-		et on afficher le bouton sortir renvoyer vers une servlet ou je change le apayer a false et ajoute dans la liste de paiement
-
-	 -->
-
-   <!-- show  aPayer attribute in p -->
+   </div>
    
 	<c:if test="${ticket.aPayer == true}">
     <div class="columns mt-5">
@@ -81,7 +84,7 @@ pageEncoding="ISO-8859-1"%>
             <input type="hidden" name="ticketNum" value="${ticket.ticketNum}" />
             <p>Montant : ${montant}</p>
             <input type="hidden" name="montant" value="${montant}" />
-            <input class="input" type="text" name="PaiementType" placeholder="Carte Bancaire">
+            <input required class="input" type="text" name="PaiementType" placeholder="Carte Bancaire">
           </div>
         </div>
 

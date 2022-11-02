@@ -13,8 +13,8 @@ prefix="fmt"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     />
   </head>
   <body>
-    <h1>Affichage tickets</h1>
-    <h2>Informations tickets :</h2>
+    <h1 class="title mb-6">Affichage tickets</h1>
+    <h2 class="subtitle mb-6">Informations tickets :</h2>
     <!-- bulma table with 4 items per line -->
     <div
       style="

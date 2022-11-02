@@ -58,18 +58,24 @@ public class OperationsBean implements Operations {
 
     }
 
-    @Override
-    public boolean estSortiAvant15mins(Ticket ticket) {
-        // return true if the attribute dateSortie from ticket is less than 15 minutes
-        return (ticket.getExitDate().getTime() - ticket.getEntryDate().getTime()) < 900000;
-    }
+    // @Override
+    // public double estSortiAvant15mins(Ticket ticket, Date exitDatetest) {
+    //     double difference = (exitDatetest.getTime() - ticket.getLastDatePaiement().getTime()) / 60000;
+    //     return difference;
+    //     // if (difference < 15) {
+    //     //     return true;
+    //     // } else {
+    //     //     return false;
+    //     // }
 
+
+    //     //return (exitDate.getTime() - ticket.getLastDatePaiement().getTime()) < 900000;
+    // }
+
+    
     @Override
-    public void sortir(Ticket ticket) {
-        if (!estSortiAvant15mins(ticket)) {
-            // create a paiement
-            System.out.println("Paiement en cours");
-        }
+    public void updateTicket(Ticket t){
+        em.merge(t);
     }
 
     /**
@@ -99,4 +105,5 @@ public class OperationsBean implements Operations {
 	public List<Ticket> findAllTicketsNoLeave() {
         return em.createQuery("SELECT t FROM Ticket t WHERE t.exitDate IS NULL", Ticket.class).getResultList();
 	}
+
 }

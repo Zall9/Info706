@@ -1,5 +1,6 @@
 package fr.usmb.m2isc.javaee.bornes.ejb;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -13,9 +14,9 @@ public interface Operations {
 
     public void b2Payer(UUID ticketID, UUID paiementID);
 
-    public boolean estSortiAvant15mins(Ticket ticket);
+    // public double estSortiAvant15mins(Ticket ticket,Date exitDate);
 
-    public void sortir(Ticket ticket);
+    public void updateTicket(Ticket t);
 
     public Ticket getTicket(UUID id);
 

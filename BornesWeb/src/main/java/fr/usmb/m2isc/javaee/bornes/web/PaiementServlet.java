@@ -44,11 +44,20 @@ public class PaiementServlet extends HttpServlet {
 		Ticket ticket = ejb.getTicketStr(num);
 		//ajout du paiement dans le tableau de ticket 
 
-		ticket.addPaiement(paiement);
-		ticket.setaPayer();
+		
+		if(ticket.addPaiement(paiement)){
+			ticket.setaPayer();
+			ejb.updateTicket(ticket);
+			
+			request.setAttribute("datePaiement", paiement.getDatePaiement());
+			request.setAttribute("ticket", ticket);
+			request.setAttribute("taille", ticket.getPayments().size());
+			request.getRequestDispatcher("/ExitParking.jsp").forward(request, response);	
+		}
+		
 
-		request.setAttribute("ticket", ticket);
-		request.getRequestDispatcher("/ExitParking.jsp").forward(request, response);		
+
+			
 	}
 
 	/**

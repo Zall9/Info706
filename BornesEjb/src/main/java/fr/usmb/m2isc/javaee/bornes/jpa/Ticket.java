@@ -44,7 +44,6 @@ public class Ticket implements Serializable {
 
     private boolean aPayer;
 
-    private Double currentMontant;
 
 
     public Ticket() {
@@ -59,7 +58,6 @@ public class Ticket implements Serializable {
         this.imagePath = imageList.get(randomNum);
         this.estSorti = false;
         this.aPayer = false;
-        this.currentMontant = 0.0;
     }
     
     public Ticket(UUID randomUUID, Date date) {
@@ -74,16 +72,11 @@ public class Ticket implements Serializable {
         this.imagePath = imageList.get(randomNum);
         this.estSorti = false;
         this.aPayer = false;
-        this.currentMontant = 0.0;
 
     }
 
-    public void setEstSorti() {
-        if(estSorti){
-            estSorti = false;
-        }else{
-            estSorti = true;
-        }
+    public void setEstSorti(boolean b) {
+        this.estSorti = b;
     }
 
     public boolean getEstSorti() {
@@ -115,7 +108,6 @@ public class Ticket implements Serializable {
         return exitDate;
     }
 
-
     public void setExitDate(Date exitDate) {
         this.exitDate = exitDate;
     }
@@ -128,6 +120,7 @@ public class Ticket implements Serializable {
     public void setTicketNum(String ticketNum) {
         this.ticketNum = ticketNum;
     }
+    
     public String getImagePath() {
         return this.imagePath;
     }
@@ -138,18 +131,34 @@ public class Ticket implements Serializable {
     }
 
     //add function who paiement to list
-    public void addPaiement(Paiement paiement){
-        this.payments.add(paiement);
+    public boolean addPaiement(Paiement paiement){
+        return this.payments.add(paiement);
+    }
+
+    //return datePaiement of last Paiement who is in array
+    public Paiement getLastPaiement(){
+        //need to works just with one paiement inside
+        if(this.payments.size() == 1){
+            return this.payments.get(0);
+        }else if(this.payments.size() > 1 ){
+            return this.payments.get(this.payments.size()-1);
+        }else{
+            return null;
+        }
     }
 
 
-    //create getter and setter for currentMontant
-    public void setcurrentMontant(Double montant){
-        this.currentMontant = montant;
+    //create getter and setter for payments
+    public List<Paiement> getPayments(){
+        return this.payments;
     }
 
-    public Double getcurrentMontant(){
-        return this.currentMontant;
+    public void setPayments(List<Paiement> payments){
+        this.payments = payments;
     }
 
+    //return paiment at i
+    public String getPaiementAt(int i){
+        return this.payments.get(i).toString();
+    }
 }
