@@ -6,12 +6,9 @@ import java.util.UUID;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
-import javax.persistence.Query;
-import javax.ejb.EJBException;
 //import javax.jws.WebMethod;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
 
 import fr.usmb.m2isc.javaee.bornes.jpa.Paiement;
@@ -42,7 +39,8 @@ public class OperationsBean implements Operations {
     }
 
     public Paiement createPayment(double montant, String typePaiement) {
-        Paiement paiement = new Paiement(java.util.UUID.randomUUID(), new Date(), montant, typePaiement);
+        //Paiement paiement = new Paiement(java.util.UUID.randomUUID().toString(), new Date(), montant, typePaiement);
+        Paiement paiement = new Paiement(montant, typePaiement);
         em.persist(paiement);
         return paiement;
     }
@@ -63,9 +61,7 @@ public class OperationsBean implements Operations {
     @Override
     public boolean estSortiAvant15mins(Ticket ticket) {
         // return true if the attribute dateSortie from ticket is less than 15 minutes
-
         return (ticket.getExitDate().getTime() - ticket.getEntryDate().getTime()) < 900000;
-
     }
 
     @Override
@@ -99,5 +95,8 @@ public class OperationsBean implements Operations {
         return em.createQuery("SELECT t FROM Ticket t", Ticket.class).getResultList();
 	}
 
-
+    @Override
+	public List<Ticket> findAllTicketsNoLeave() {
+        return em.createQuery("SELECT t FROM Ticket t WHERE t.exitDate IS NULL", Ticket.class).getResultList();
+	}
 }

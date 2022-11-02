@@ -43,6 +43,10 @@ public class Ticket implements Serializable {
     private boolean estSorti;
 
     private boolean aPayer;
+
+    private Double currentMontant;
+
+
     public Ticket() {
         imageList.add("./assets/cars/bugatti.png");
         imageList.add("./assets/cars/Renault-Eleve.png");
@@ -55,8 +59,8 @@ public class Ticket implements Serializable {
         this.imagePath = imageList.get(randomNum);
         this.estSorti = false;
         this.aPayer = false;
+        this.currentMontant = 0.0;
     }
-    
     
     public Ticket(UUID randomUUID, Date date) {
         imageList.add("./assets/cars/bugatti.png");
@@ -70,10 +74,16 @@ public class Ticket implements Serializable {
         this.imagePath = imageList.get(randomNum);
         this.estSorti = false;
         this.aPayer = false;
+        this.currentMontant = 0.0;
+
     }
 
-    public boolean setEstSorti() {
-        return !estSorti;
+    public void setEstSorti() {
+        if(estSorti){
+            estSorti = false;
+        }else{
+            estSorti = true;
+        }
     }
 
     public boolean getEstSorti() {
@@ -84,11 +94,15 @@ public class Ticket implements Serializable {
         return entryDate;
     }
 
-    public boolean setAPayer() {
-        return !aPayer;
+    public void setaPayer() {
+        if(aPayer){
+            aPayer = false;
+        }else{
+            aPayer = true;
+        }
     }
 
-    public boolean getAPayer() {
+    public boolean getaPayer() {
         return aPayer;
     }
 
@@ -122,4 +136,20 @@ public class Ticket implements Serializable {
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
+
+    //add function who paiement to list
+    public void addPaiement(Paiement paiement){
+        this.payments.add(paiement);
+    }
+
+
+    //create getter and setter for currentMontant
+    public void setcurrentMontant(Double montant){
+        this.currentMontant = montant;
+    }
+
+    public Double getcurrentMontant(){
+        return this.currentMontant;
+    }
+
 }

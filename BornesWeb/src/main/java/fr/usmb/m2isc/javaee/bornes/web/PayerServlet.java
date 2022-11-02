@@ -1,7 +1,6 @@
 package fr.usmb.m2isc.javaee.bornes.web;
 
 import java.io.IOException;
-import java.util.UUID;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;

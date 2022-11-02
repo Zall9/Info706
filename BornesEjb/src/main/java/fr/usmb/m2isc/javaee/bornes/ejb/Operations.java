@@ -3,6 +3,7 @@ package fr.usmb.m2isc.javaee.bornes.ejb;
 import java.util.List;
 import java.util.UUID;
 
+import fr.usmb.m2isc.javaee.bornes.jpa.Paiement;
 import fr.usmb.m2isc.javaee.bornes.jpa.Ticket;
 
 public interface Operations {
@@ -20,6 +21,9 @@ public interface Operations {
 
     public Ticket getTicketStr(String id);
 
+    public Paiement createPayment(double montant, String typePaiement);
 
     List<Ticket> findAllTickets();
+    List<Ticket> findAllTicketsNoLeave();
+
 }

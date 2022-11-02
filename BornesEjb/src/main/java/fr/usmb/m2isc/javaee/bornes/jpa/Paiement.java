@@ -1,13 +1,13 @@
 package fr.usmb.m2isc.javaee.bornes.jpa;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Paiement {
+public class Paiement implements Serializable{
 
     /*
      * Il nous faut
@@ -17,7 +17,7 @@ public class Paiement {
      * le type de paiement utilisé (CB, espèces).
      */
     @Id
-    private UUID id;
+    private String id;
     private Date datePaiement;
     private double montant;
     private String typePaiement;
@@ -26,9 +26,16 @@ public class Paiement {
     public Paiement() {
     }
 
+    public Paiement(double montant, String typePaiement) {
+        this.id = UUID.randomUUID().toString();
+        this.datePaiement = new Date();
+        this.montant = montant;
+        this.typePaiement = typePaiement;
+    }
+
     // un constructeur avec tous les paramètres
 
-    public Paiement(UUID id, Date datePaiement, double montant, String typePaiement) {
+    public Paiement(String id, Date datePaiement, double montant, String typePaiement) {
         this.id = id;
         this.datePaiement = datePaiement;
         this.montant = montant;
@@ -37,11 +44,11 @@ public class Paiement {
 
     // les getters et les setters
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -1,8 +1,6 @@
 package fr.usmb.m2isc.javaee.bornes.web;
 
 import java.io.IOException;
-import java.util.List;
-
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -13,12 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.usmb.m2isc.javaee.bornes.ejb.Operations;
 import fr.usmb.m2isc.javaee.bornes.jpa.Ticket;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Servlet utilisee pour afficher un compte.
  */
-@WebServlet("/AfficherTicketsServlet")
-public class AfficherTicketsServlet extends HttpServlet {
+@WebServlet("/SetPaiementServlet")
+public class SetPaiementServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@EJB
@@ -27,7 +27,7 @@ public class AfficherTicketsServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AfficherTicketsServlet() {
+    public SetPaiementServlet() {
         super();
     }
 
@@ -36,10 +36,22 @@ public class AfficherTicketsServlet extends HttpServlet {
 	 */
     @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Ticket> tickets ;
-		tickets = ejb.findAllTicketsNoLeave();
-		request.setAttribute("tickets", tickets);
-		request.getRequestDispatcher("/AfficherTickets.jsp").forward(request, response);		
+		String num = request.getParameter("ticketNum");
+		Ticket ticket = ejb.getTicketStr(num);
+        ticket.setaPayer();
+        //create new date now
+        Date n = new Date();
+
+        long duration  = ticket.getEntryDate().getTime() - n.getTime();
+        long diffInMinutes = TimeUnit.MILLISECONDS.toMinutes(duration);
+        double montant = 10000;
+
+        // ticket.setcurrentMontant(montant);
+
+		request.setAttribute("ticket", ticket);
+        request.setAttribute("montant", montant);
+
+		request.getRequestDispatcher("/PayerTicket.jsp").forward(request, response);		
 	}
 
 	/**
