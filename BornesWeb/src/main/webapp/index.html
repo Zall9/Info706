@@ -16,8 +16,8 @@
     </div>
 
 
-    <div class="columns  is-vcentered m-auto">
-        <div class="column ml-6">
+    <div class="columns  is-vcentered ml-6">
+        <div class="column">
           <h2 class="subtitle">Recuperer votre Ticket</h2>
           <form action="CreerTicketServlet" method="post">
             <button class="button is-warning" type="submit" value="valider">
@@ -34,11 +34,26 @@
             </button>
           </form>
         </div>
+
+
+        <div class="column">
+          <h2 class="subtitle">Afficher tous les tickets avec la liste de paiement</h2>
+          <form action="AfficherTicketsServlet" method="get">
+            <button class="button is-warning" type="submit">
+              Afficher
+            </button>
+          </form>
+        </div>
+
+
+
     </div>
 
     <div class="has-text-centered mt-6">
       <h3 class="title">to do list</h3>
       <ul>
+        <li>Afficher tous les tickets avec la liste de paiement</li>
+        <li>Changer le montant</li>
         <li>Creer le README du github</li>
         <li>refactor le code clean</li>
         <li>Add le prof dans le read me</li>
