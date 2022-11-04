@@ -38,6 +38,7 @@ public class ExitServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+				
 		String num = request.getParameter("ticketNum");
 		Ticket ticket = ejb.getTicketStr(num);
 

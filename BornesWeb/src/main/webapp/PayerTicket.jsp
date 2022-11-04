@@ -84,7 +84,21 @@ pageEncoding="ISO-8859-1"%>
             <input type="hidden" name="ticketNum" value="${ticket.ticketNum}" />
             <p>Montant : ${montant}</p>
             <input type="hidden" name="montant" value="${montant}" />
-            <input required class="input" type="text" name="PaiementType" placeholder="Carte Bancaire">
+
+            <!-- Liste type de paiement -->
+
+
+              <div class="select is-rounded">
+                <select required name="PaiementType">
+                  <option value="CB">CB</option>
+                  <option value="ESPECES">ESPECES</option>
+                </select>
+              </div>
+
+            <!-- <input required class="input" type="text" name="PaiementType" placeholder="Carte Bancaire"> -->
+
+
+
           </div>
         </div>
 
