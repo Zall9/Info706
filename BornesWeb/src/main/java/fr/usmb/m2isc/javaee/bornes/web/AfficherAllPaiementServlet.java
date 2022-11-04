@@ -11,13 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.usmb.m2isc.javaee.bornes.ejb.Operations;
+import fr.usmb.m2isc.javaee.bornes.jpa.Paiement;
 import fr.usmb.m2isc.javaee.bornes.jpa.Ticket;
 
 /**
  * Servlet utilisee pour afficher un compte.
  */
-@WebServlet("/AfficherTicketsServlet")
-public class AfficherTicketsServlet extends HttpServlet {
+@WebServlet("/AfficherAllPaiementServlet")
+public class AfficherAllPaiementServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@EJB
@@ -26,7 +27,7 @@ public class AfficherTicketsServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AfficherTicketsServlet() {
+	public AfficherAllPaiementServlet() {
 		super();
 	}
 
@@ -38,19 +39,13 @@ public class AfficherTicketsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// get attribute listPaiement
-		String listPaiement = request.getParameter("listPaiement");
-		List<Ticket> tickets;
-
-		if (listPaiement.equals("true")) {
-			tickets = ejb.findAllTickets();
-			request.setAttribute("tickets", tickets);
-			request.getRequestDispatcher("/AfficherTicketsPaiements.jsp").forward(request, response);
-		} else {
-			tickets = ejb.findAllTicketsNoLeave();
-			request.setAttribute("tickets", tickets);
-			request.getRequestDispatcher("/AfficherTickets.jsp").forward(request, response);
-		}
+		String num = request.getParameter("ticketNum");
+		Ticket ticket = ejb.getTicketStr(num);
+		//get All paiement from ticket
+		List<Paiement> paiements = ticket.getPayments();
+		request.setAttribute("ticket", ticket);
+		request.setAttribute("allPaiements", paiements);
+		request.getRequestDispatcher("/AfficherAllPaiements.jsp").forward(request, response);
 
 	}
 

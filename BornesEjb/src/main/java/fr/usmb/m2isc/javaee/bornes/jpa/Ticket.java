@@ -147,7 +147,6 @@ public class Ticket implements Serializable {
         }
     }
 
-
     //create getter and setter for payments
     public List<Paiement> getPayments(){
         return this.payments;

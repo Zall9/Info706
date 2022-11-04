@@ -10,43 +10,43 @@
     <link rel="stylesheet" type="text/css" href="css/base.css" />
   </head>
   <body>
-
     <div class="has-text-centered mb-6 mt-6">
       <h1 class="title">Bienvenu au parking de Monaco</h1>
     </div>
 
+    <div class="columns is-vcentered ml-6">
+      <div class="column">
+        <h2 class="subtitle">Recuperer votre Ticket</h2>
+        <form action="CreerTicketServlet" method="post">
+          <button class="button is-warning" type="submit" value="valider">
+            Retirez votre ticket de la borne
+          </button>
+        </form>
+      </div>
 
-    <div class="columns  is-vcentered ml-6">
-        <div class="column">
-          <h2 class="subtitle">Recuperer votre Ticket</h2>
-          <form action="CreerTicketServlet" method="post">
-            <button class="button is-warning" type="submit" value="valider">
-              Retirez votre ticket de la borne
-            </button>
-          </form>
-        </div>
+      <div class="column">
+        <h2 class="subtitle">
+          Payer votre ticket en choisisant votre voiture :
+        </h2>
+        <form action="AfficherTicketsServlet" method="get">
+          <input type="hidden" name="listPaiement" value="false" />
+          <button class="button is-warning" type="submit">
+            Payez votre ticket !
+          </button>
+        </form>
+      </div>
 
-        <div class="column">
-          <h2 class="subtitle">Payer votre ticket en choisisant votre voiture :</h2>
-          <form action="AfficherTicketsServlet" method="get">
-            <button class="button is-warning" type="submit">
-              Payez votre ticket !
-            </button>
-          </form>
-        </div>
-
-
-        <div class="column">
-          <h2 class="subtitle">Afficher tous les tickets avec la liste de paiement</h2>
-          <form action="AfficherTicketsServlet" method="get">
-            <button class="button is-warning" type="submit">
-              Afficher
-            </button>
-          </form>
-        </div>
-
-
-
+      <div class="column">
+        <h2 class="subtitle">
+          Afficher tous les tickets avec la liste de paiement pour chaque ticket
+        </h2>
+        <form action="AfficherTicketsServlet" method="get">
+          <input type="hidden" name="listPaiement" value="true" />
+          <button class="button is-warning" type="submit">
+            Afficher les tickets ainsi que la liste des paiements
+          </button>
+        </form>
+      </div>
     </div>
 
     <div class="has-text-centered mt-6">
@@ -54,13 +54,12 @@
       <ul>
         <li>Afficher tous les tickets avec la liste de paiement</li>
         <li>Changer le montant</li>
+        <li>Mettre en place plus de function dans le ejb, dans les fichiers servlet</li>
         <li>Creer le README du github</li>
         <li>refactor le code clean</li>
         <li>Add le prof dans le read me</li>
         <li>Faire une page error.jsp</li>
       </ul>
     </div>
-
-
   </body>
 </html>
