@@ -32,8 +32,10 @@ prefix="fmt"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
         <div class="card">
           <p>
             Date entree :
-            <fmt:formatDate value="${ticket.entryDate}" pattern="dd/MM/yyyy" />
+            <fmt:formatDate value="${ticket.entryDate}" pattern="dd/MM/yyyy HH:mm:ss" />
+
           </p>
+          
           <div class="card-image">
             <figure class="image is-4by3">
               <img src="${ticket.imagePath}" alt="image of car " />

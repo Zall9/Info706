@@ -33,5 +33,35 @@ prefix="fmt"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
         </li>
       </c:forEach>
     </div>
+
+    <div
+    style="
+      display: flex;
+      justify-content: center;
+  flex-direction: row;
+      align-items: center;
+      align-content: center;
+      margin-top: 25px;
+  gap: 25px;
+  
+    "
+  >
+    <button class="button is-danger" >
+      <a href="index.html" style="color: white"
+        >Revenir a la page principale</a
+      >
+    </button>
+
+    <form action="AfficherTicketsServlet" method="get">
+      <input type="hidden" name="listPaiement" value="true" />
+      <button class="button is-warning" type="submit">
+        Afficher les tickets ainsi que la liste des paiements
+      </button>
+    </form>
+
+  </div>
+
+
+
   </body>
 </html>

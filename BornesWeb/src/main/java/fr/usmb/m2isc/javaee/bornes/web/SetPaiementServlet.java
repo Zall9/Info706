@@ -45,7 +45,11 @@ public class SetPaiementServlet extends HttpServlet {
 
         long duration  = ticket.getEntryDate().getTime() - n.getTime();
         long diffInMinutes = TimeUnit.MILLISECONDS.toMinutes(duration);
-        double montant = 1000;
+
+		//100 euros une minutes
+		double coefficientMontant = 100;
+
+        double montant = Math.abs(diffInMinutes * coefficientMontant) ;
 
 		request.setAttribute("ticket", ticket);
         request.setAttribute("montant", montant);
