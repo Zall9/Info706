@@ -11,7 +11,7 @@
       </head>
 <body>
     <div class="has-text-centered">
-       <h1 class="title">Paiement reussi</h1>
+       <h1 class="title mt-6">Paiement reussi</h1>
     </div>
 
    

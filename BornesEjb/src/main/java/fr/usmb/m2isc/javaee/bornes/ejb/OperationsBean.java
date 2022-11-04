@@ -58,19 +58,6 @@ public class OperationsBean implements Operations {
 
     }
 
-    // @Override
-    // public double estSortiAvant15mins(Ticket ticket, Date exitDatetest) {
-    //     double difference = (exitDatetest.getTime() - ticket.getLastDatePaiement().getTime()) / 60000;
-    //     return difference;
-    //     // if (difference < 15) {
-    //     //     return true;
-    //     // } else {
-    //     //     return false;
-    //     // }
-
-
-    //     //return (exitDate.getTime() - ticket.getLastDatePaiement().getTime()) < 900000;
-    // }
 
     
     @Override
