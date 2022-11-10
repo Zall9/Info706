@@ -15,7 +15,7 @@ import fr.usmb.m2isc.javaee.bornes.jpa.Paiement;
 import fr.usmb.m2isc.javaee.bornes.jpa.Ticket;
 
 /**
- * Servlet utilisee pour afficher un compte.
+ * Servlet utilisee pour afficher tous les paiements d'un tickets
  */
 @WebServlet("/AfficherAllPaiementServlet")
 public class AfficherAllPaiementServlet extends HttpServlet {

@@ -13,7 +13,7 @@ import fr.usmb.m2isc.javaee.bornes.ejb.Operations;
 import fr.usmb.m2isc.javaee.bornes.jpa.Ticket;
 
 /**
- * Servlet utilisee pour afficher un compte.
+ * Servlet utilisee pour afficher un ticket.
  */
 @WebServlet("/AfficherTicketServlet")
 public class AfficherTicketServlet extends HttpServlet {

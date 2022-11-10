@@ -15,7 +15,7 @@ import fr.usmb.m2isc.javaee.bornes.jpa.Paiement;
 import fr.usmb.m2isc.javaee.bornes.jpa.Ticket;
 
 /**
- * Servlet utilisee pour afficher un compte.
+ * Servlet utilisee pour vérifier le temps de sortie et si l'utilisateur peut sortir ou pas
  */
 @WebServlet("/ExitServlet")
 public class ExitServlet extends HttpServlet {

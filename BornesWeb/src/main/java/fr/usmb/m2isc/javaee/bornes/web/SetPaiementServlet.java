@@ -15,7 +15,8 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Servlet utilisee pour afficher un compte.
+ * Servlet utilisee pour calculer le montant du paiement et renvoyer vers 
+ * l'interface dynamique qui permet d'afficher la nouvelle partie de la page.
  */
 @WebServlet("/SetPaiementServlet")
 public class SetPaiementServlet extends HttpServlet {

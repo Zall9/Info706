@@ -13,7 +13,7 @@ import fr.usmb.m2isc.javaee.bornes.ejb.Operations;
 import fr.usmb.m2isc.javaee.bornes.jpa.Ticket;
 
 /**
- * Servlet utilisee pour afficher un compte.
+ * Servlet utilisee pour mettre en place le fonctionnement de paiement.
  */
 @WebServlet("/PayerServlet")
 public class PayerServlet extends HttpServlet {
@@ -37,6 +37,8 @@ public class PayerServlet extends HttpServlet {
 		String num = request.getParameter("ticketNum");
 		Ticket ticket = ejb.getTicketStr(num);
 
+		//fonction permettant de savoir si l'utilisateur peut faire le paiement ou pas 
+		// l'utilisateur ayant deja effectuer le paiement, lorsqu'il retourne sur la page de paiement il est direct rediriger vers la sortie
 		if(ticket.canMakePaiement())
 		{
 			request.setAttribute("ticket", ticket);

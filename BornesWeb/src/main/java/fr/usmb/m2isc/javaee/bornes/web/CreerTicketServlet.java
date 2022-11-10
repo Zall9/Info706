@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServlet;
 import fr.usmb.m2isc.javaee.bornes.ejb.Operations;
 import fr.usmb.m2isc.javaee.bornes.jpa.Ticket;
 
+
+/**
+ * Servlet utilisee pour créer plusieurs tickets.
+ */
 @WebServlet("/CreerTicketServlet")
 public class CreerTicketServlet extends HttpServlet {
     //private static final long serialVersionUID = 1L;

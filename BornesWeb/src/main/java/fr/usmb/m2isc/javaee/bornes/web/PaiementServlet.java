@@ -14,57 +14,57 @@ import fr.usmb.m2isc.javaee.bornes.jpa.Paiement;
 import fr.usmb.m2isc.javaee.bornes.jpa.Ticket;
 
 /**
- * Servlet utilisee pour afficher un compte.
+ * Servlet utilisee pour effectuer le paiement
  */
 @WebServlet("/PaiementServlet")
 public class PaiementServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	@EJB
 	private Operations ejb;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PaiementServlet() {
-        super();
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-    @Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public PaiementServlet() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String num = request.getParameter("ticketNum");
 		String typePaiement = request.getParameter("PaiementType");
 		String montant = request.getParameter("montant");
 
-		//create new Paiement variable
+		// create new Paiement variable
 		Paiement paiement = ejb.createPayment(Double.parseDouble(montant), typePaiement);
 		Ticket ticket = ejb.getTicketStr(num);
-		//ajout du paiement dans le tableau de ticket 
+		// ajout du paiement dans le tableau de ticket
 
-		
-		if(ticket.addPaiement(paiement)){
+		if (ticket.addPaiement(paiement)) {
 			ticket.setaPayer();
 			ejb.updateTicket(ticket);
-			
+
 			request.setAttribute("datePaiement", paiement.getDatePaiement());
 			request.setAttribute("ticket", ticket);
 			request.setAttribute("taille", ticket.getPayments().size());
-			request.getRequestDispatcher("/ExitParking.jsp").forward(request, response);	
+			request.getRequestDispatcher("/ExitParking.jsp").forward(request, response);
 		}
-		
 
-
-			
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-    @Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 
