@@ -173,7 +173,7 @@ public class Ticket implements Serializable {
 
             //diff in minute
 
-            int diffMinutes = 2;
+            int diffMinutes = 15;
 
             long diff = (now.getTime() - lastPaiement.getTime()) / 60000;
             if(diff >= diffMinutes){

@@ -111,10 +111,5 @@ pageEncoding="ISO-8859-1"%>
       </div>
     </div>
 	</c:if>
-	
-	<!-- <c:if test="${ticket.estSorti == true}">
-		<h1>je suis dynamique true</h1>
-	</c:if> -->
-
   </body>
 </html>

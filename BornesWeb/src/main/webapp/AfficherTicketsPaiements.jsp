@@ -14,7 +14,7 @@ prefix="fmt"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
   </head>
   <body>
     <h1 class="title mb-6 mt-6">
-      Affichage tickets ainsi que la listes paiements
+      Affichage tickets ainsi que la liste de tous les paiements
     </h1>
 
     <div
