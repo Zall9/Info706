@@ -15,6 +15,32 @@ En ce qui concerne du serveur, nous avons utilisé **Payara**, lancer à partir
 
 ## Nos choix d’implementations
 
+Nous avons décidé d’utiliser le système EAR.
+
+Notre projet est regroupé en trois dossiers :
+
+- BornesEAR
+- BornesEJB
+- BornesWEB
+
+### BornesEJB :
+
+---
+
+Ce dossier contient les deux JPA (Ticket et Paiement) ainsi que l’EJB SESSION avec les deux fichiers Operations.java et OperationsBean.java.
+
+### BornesWEB :
+
+---
+
+Le dossier BornesWEB contient la totalité de nos Servlet ainsi que nos pages JSP et la page d’accueil HTML.
+
+Voici deux images expliquant le fonctionnement de notre système : 
+
+![Untitled](imagesREADME/first.png)
+
+![Untitled](imagesREADME/second.png)
+
 ## Comment utiliser l'application ?
 
 - Cloner le git sur votre machine
