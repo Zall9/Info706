@@ -45,7 +45,7 @@ public class Ticket implements Serializable {
     private boolean aPayer;
 
 
-
+    //constructeur par défaut
     public Ticket() {
         imageList.add("./assets/cars/bugatti.png");
         imageList.add("./assets/cars/Renault-Eleve.png");
@@ -87,6 +87,7 @@ public class Ticket implements Serializable {
         return entryDate;
     }
 
+    //variable utiliser dans les jsp et servlet permettant de mettre en place l'affichage dynamique
     public void setaPayer() {
         if(aPayer){
             aPayer = false;
