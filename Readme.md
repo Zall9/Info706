@@ -7,7 +7,7 @@ Projet réalisé par les étudiants en master 1 Informatique a l’université S
 
 Lien vers le dépôt initial comportant le sujet du TP ainsi que des explications sur le fonctionnement des bornes : [https://gitlab.com/info706_jee/Sujet_TP](https://gitlab.com/info706_jee/Sujet_TP)
 
-## Les technologies utilisees
+## Les technologies utilisées
 
 Lors du développement du TP, nous avons utilisé principalement le langage **Java** avec **Java EE** ainsi que le framework **bulma** pour la mise en place des styles des pages web.
 
