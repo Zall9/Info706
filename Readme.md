@@ -23,6 +23,12 @@ Notre projet est regroupé en trois dossiers :
 - BornesEJB
 - BornesWEB
 
+
+Pour modifier le délai de paiement gratuit pour le ticket, il faut modifier les fichiers suivant la variable DiffMinutes : 
+
+- Fichier Ticket.java
+- ExitServlet.java
+
 ### BornesEJB :
 
 ---
