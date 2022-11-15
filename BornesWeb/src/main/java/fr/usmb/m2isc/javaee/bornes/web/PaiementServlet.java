@@ -1,6 +1,8 @@
 package fr.usmb.m2isc.javaee.bornes.web;
 
 import java.io.IOException;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -39,11 +41,27 @@ public class PaiementServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String num = request.getParameter("ticketNum");
 		String typePaiement = request.getParameter("PaiementType");
-		String montant = request.getParameter("montant");
+		Ticket ticket = ejb.getTicketStr(num);
+			
+		String montant = "";
 
+		//if montant parameter empty send to error page
+		if (request.getParameter("montant") == null) {
+			Date n = new Date();
+			long duration  = ticket.getEntryDate().getTime() - n.getTime();
+			long diffInMinutes = TimeUnit.MILLISECONDS.toMinutes(duration);
+
+			//2 centimes la minute
+			double coefficientMontant = 0.02;
+
+			double m = Math.abs(diffInMinutes * coefficientMontant) ;
+			//convert double to string
+			montant = Double.toString(m);
+		}{
+			montant = request.getParameter("montant");
+		}
 		// create new Paiement variable
 		Paiement paiement = ejb.createPayment(Double.parseDouble(montant), typePaiement);
-		Ticket ticket = ejb.getTicketStr(num);
 		// ajout du paiement dans le tableau de ticket
 
 		if (ticket.addPaiement(paiement)) {

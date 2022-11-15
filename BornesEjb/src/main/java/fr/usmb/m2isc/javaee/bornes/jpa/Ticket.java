@@ -96,6 +96,11 @@ public class Ticket implements Serializable {
         }
     }
 
+
+    public void setaPayer(boolean b){
+        this.aPayer = b;
+    }
+
     public boolean getaPayer() {
         return aPayer;
     }

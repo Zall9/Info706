@@ -15,11 +15,10 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Servlet utilisee pour calculer le montant du paiement et renvoyer vers 
- * l'interface dynamique qui permet d'afficher la nouvelle partie de la page.
+ * Servlet utilisee pour reset le paiement ainsi synchroniser avec l'affichage dynamique
  */
-@WebServlet("/SetPaiementServlet")
-public class SetPaiementServlet extends HttpServlet {
+@WebServlet("/ResetPaiementServlet")
+public class ResetPaiementServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@EJB
@@ -28,7 +27,7 @@ public class SetPaiementServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SetPaiementServlet() {
+    public ResetPaiementServlet() {
         super();
     }
 
@@ -39,23 +38,9 @@ public class SetPaiementServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String num = request.getParameter("ticketNum");
 		Ticket ticket = ejb.getTicketStr(num);
-        ticket.setaPayer();
+        ticket.setaPayer(false);
 		ejb.updateTicket(ticket);
-        //create new date now
-        Date n = new Date();
-
-        long duration  = ticket.getEntryDate().getTime() - n.getTime();
-        long diffInMinutes = TimeUnit.MILLISECONDS.toMinutes(duration);
-
-		//2 centimes la minute
-		double coefficientMontant = 0.02;
-
-        double montant = Math.abs(diffInMinutes * coefficientMontant) ;
-
-		request.setAttribute("ticket", ticket);
-        request.setAttribute("montant", montant);
-
-		request.getRequestDispatcher("/PayerTicket.jsp").forward(request, response);		
+		request.getRequestDispatcher("/index.html").forward(request, response);		
 	}
 
 	/**

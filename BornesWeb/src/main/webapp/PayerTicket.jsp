@@ -56,11 +56,14 @@ pageEncoding="ISO-8859-1"%>
 		
       "
     >
-      <button class="button is-danger" >
-        <a href="index.html" style="color: white"
-          >Revenir a la page principale</a
-        >
-      </button>
+      
+
+      <form action="ResetPaiementServlet" method="get">
+        <input type="hidden" name="ticketNum" value="${ticket.ticketNum}" />
+        <button class="button is-danger" type="submit" style="color: white">Revenir a la page principale</style=>
+        </button>
+      </form>
+
 
       <form action="SetPaiementServlet" method="get">
         <input type="hidden" name="ticketNum" value="${ticket.ticketNum}" />
